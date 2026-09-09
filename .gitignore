@@ -1,0 +1,12 @@
+# Credentials & secrets — never commit
+**/HOSTING_ACCOUNT*.txt
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+# OS junk
+.DS_Store
+Thumbs.db
+# Archive snapshots (repo tree is the source of truth)
+*.zip

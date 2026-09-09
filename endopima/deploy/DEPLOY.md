@@ -3,7 +3,7 @@
 ## ✅ DONE — already live (3 Sep 2026)
 
 **https://endopima-kenya.surge.sh** — deployed, verified HTTP 200, full app.
-Updating it later: see `HOSTING_ACCOUNT.txt` (throwaway surge.sh account). The steps below document the alternatives (GitHub Pages / Netlify) if you ever want the link on your own account or domain.
+The hosting account used for the surge.sh deploy was a throwaway and has been abandoned (its credentials were once committed to this repo in error; the file is scrubbed and `.gitignore` now blocks it). To update the deploy, create your own free surge.sh account (`surge` CLI) or use GitHub Pages / Netlify — steps below.
 
 ---
 **Goal:** put the app online so it has a real, public, HTTPS link you can send on WhatsApp — in ~10 minutes, for free, without changing the single-file architecture.

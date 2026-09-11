@@ -1,0 +1,6 @@
+Contact: https://github.com/Nyaenya-Devine/endopima-kenya/issues
+Expires: 2027-05-12T00:00:00.000Z
+Acknowledgments: https://github.com/Nyaenya-Devine/endopima-kenya/blob/main/README.md
+Preferred-Languages: en, sw
+Canonical: https://nyaenya-devine.github.io/endopima-kenya/.well-known/security.txt
+# EndoPima is a prototype for education & care-navigation demo, not a medical device.

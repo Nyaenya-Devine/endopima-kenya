@@ -2,7 +2,7 @@
 
 **A community-first endometriosis early-recognition, care-navigation, affordability and health-intelligence platform concept for Kenya** — bilingual (English ⇄ Kiswahili), mobile-first, fully self-contained single-page prototype.
 
-- ▶️ **Live prototype:** https://endopima-kenya.surge.sh
+- ▶️ **Live prototype:** https://nyaenya-devine.github.io/endopima-kenya/
 - 📄 Research + idea brief: [`Endometriosis_Kenya_Research_and_Idea.md`](Endometriosis_Kenya_Research_and_Idea.md)
 - 📂 App + docs live under [`endopima/`](endopima/README.md) (v1.2 final refinement; reports in `endopima/review/`)
 

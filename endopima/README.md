@@ -4,7 +4,7 @@
 
 > Prototype **v1.2** — single-file, zero-setup, bilingual (English ⇄ Kiswahili), mobile-first, fully self-contained.
 > v1.2 = final pre-human-verification refinement: woman-first first screen, personal hierarchy (me → symptoms → story → next step → care), ecosystem content secondary, statistics with provenance, 5 embedded illustrations.
-> 🟢 **Live demo:** https://endopima-kenya.surge.sh (project complete — see `PROJECT_COMPLETE.md`)
+> 🟢 **Live demo:** https://nyaenya-devine.github.io/endopima-kenya/ (project complete — see `PROJECT_COMPLETE.md`; previous surge.sh hosting abandoned)
 > Based on the research report: `../Endometriosis_Kenya_Research_and_Idea.md`
 
 ---

@@ -1,60 +1,24 @@
-/* EndoPima Service Worker - offline-first cache for static demo
-   God Mode PWA: cache-first for assets, network-first for navigation fallback.
-   No external network, no analytics. Safe for low-connectivity Kenya contexts.
-*/
-const CACHE_NAME = 'endopima-v1-2026-05-12';
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
-  );
+/* EndoPima offline-first application shell. */
+const CACHE_NAME = 'endopima-v1.3-2026-09-25';
+const ASSETS = ['./', './index.html', './manifest.json', './icon-512.png'];
+self.addEventListener('install', event => {
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim()));
 });
-
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
-  // Only handle same-origin
-  if (url.origin !== self.location.origin) return;
-
-  // Navigation: network-first, fallback to cache + offline page
-  if (req.mode === 'navigate') {
-    event.respondWith(
-      fetch(req)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, clone));
-          return res;
-        })
-        .catch(() => caches.match(req).then((m) => m || caches.match('./index.html')))
-    );
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
+  if (request.mode === 'navigate') {
+    event.respondWith(fetch(request, { cache: 'no-store' }).then(response => {
+      if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
+      return response;
+    }).catch(() => caches.match(request).then(cached => cached || caches.match('./index.html'))));
     return;
   }
-
-  // Assets: cache-first
-  event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req).then((res) => {
-        if (res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, clone));
-        }
-        return res;
-      });
-    })
-  );
+  event.respondWith(caches.match(request).then(cached => cached || fetch(request).then(response => {
+    if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(request, response.clone()));
+    return response;
+  })));
 });

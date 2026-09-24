@@ -1,18 +1,40 @@
-# EndoPima — Kupima Mapema (Check Early)
+# EndoPima — Kupima Mapema
 
-**A community-first endometriosis early-recognition, care-navigation, affordability and health-intelligence platform concept for Kenya** — bilingual (English ⇄ Kiswahili), mobile-first, fully self-contained single-page prototype.
+A bilingual, mobile-first prototype that helps people in Kenya recognise concerning endometriosis symptoms, organise their history and prepare for an appropriate care conversation.
 
-- ▶️ **Live prototype:** https://nyaenya-devine.github.io/endopima-kenya/
-- 📄 Research + idea brief: [`Endometriosis_Kenya_Research_and_Idea.md`](Endometriosis_Kenya_Research_and_Idea.md)
-- 📂 App + docs live under [`endopima/`](endopima/README.md) (v1.2 final refinement; reports in `endopima/review/`)
+**Live prototype:** https://nyaenya-devine.github.io/endopima-kenya/
 
-> **Health disclaimer:** EndoPima is a health-awareness and navigation **concept**, not medical advice, diagnosis, or a clinical product. It does not store or process personal health data.
+## Clinical boundary
 
-## Repo layout
+EndoPima is an awareness and care-navigation prototype. It is not a diagnostic tool, medical device, emergency service or substitute for a clinician. Its decision-support logic has not been clinically validated, directory entries are demonstrations, and no treatment outcome is promised.
 
-| Path | What |
-| --- | --- |
-| `endopima/` | The prototype (single-file HTML + assets), backend sketch (`backend/`), deploy notes (`deploy/`), review kits (`review/`) |
-| `Endometriosis_Kenya_Research_and_Idea.md` | The original research + idea brief (source of the concept) |
+The prototype keeps user-entered information on the device. Do not enter identifiable health information on a shared device.
 
-**No secrets in this repo:** hosting accounts, API keys, and env files are intentionally **not** committed (see `.gitignore`). The earlier throwaway surge.sh hosting account has been abandoned.
+## Product principles
+
+- English and Kiswahili throughout the main journey
+- Low-bandwidth, offline-capable application shell
+- Plain-language symptom reflection without diagnosis claims
+- Urgent warning signs separated from the symptom-priority flow
+- Appointment preparation and locally relevant care-navigation prompts
+- Demonstration data labelled at the point of use
+- Reduced-motion, keyboard and screen-reader considerations
+
+## Run and verify
+
+Open `endopima/index.html` directly, or serve the repository locally:
+
+```bash
+python3 -m http.server 8080
+python3 scripts/validate_prototype.py
+```
+
+The validation script checks document structure, duplicate IDs, safety language, demonstration-data labels and inline JavaScript syntax.
+
+## Review before real-world use
+
+Clinical, safeguarding, privacy, Kiswahili-language and usability review with Kenyan patients, clinicians and community health teams is required before any pilot. Any future data collection must use explicit consent, data minimisation, retention controls and an independently reviewed protocol.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for private vulnerability reporting.

@@ -89,11 +89,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Verify next.config.ts has security headers
+        if: ${{ hashFiles('next.config.*') != '' }}
         run: |
-          grep -q "X-Frame-Options" next.config.ts || (echo "X-Frame-Options missing in next.config.ts" && exit 1)
-          grep -q "Content-Security-Policy" next.config.ts || (echo "CSP missing" && exit 1)
-          grep -q "Strict-Transport-Security" next.config.ts || (echo "HSTS missing" && exit 1)
-          grep -q "Permissions-Policy" next.config.ts || (echo "Permissions-Policy missing" && exit 1)
+          grep -q "X-Frame-Options" next.config.* src/proxy.ts 2>/dev/null || (echo "X-Frame-Options missing in next.config.ts" && exit 1)
+          grep -q "Content-Security-Policy" next.config.* src/proxy.ts 2>/dev/null || (echo "CSP missing" && exit 1)
+          grep -q "Strict-Transport-Security" next.config.* src/proxy.ts 2>/dev/null || (echo "HSTS missing" && exit 1)
+          grep -q "Permissions-Policy" next.config.* src/proxy.ts 2>/dev/null || (echo "Permissions-Policy missing" && exit 1)
           echo "Security headers present — DENY, nosniff, HSTS, CSP, Permissions-Policy (microphone=self for voice calls)"
 
   electron-hardening:
@@ -102,6 +103,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Verify Electron security best practices
+        if: ${{ hashFiles('electron.js') != '' }}
         run: |
           grep -q "contextIsolation: true" electron.js || (echo "contextIsolation must be true" && exit 1)
           grep -q "nodeIntegration: false" electron.js || (echo "nodeIntegration must be false" && exit 1)

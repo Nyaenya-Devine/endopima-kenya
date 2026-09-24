@@ -3114,7 +3114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMore();
   applyI18n();
   go('home');
-  // God Mode PWA: offline-first service worker registration (safe, no external fetch)
+  // Register the offline application shell.
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(function(reg){
       console.log('[EndoPima] SW registered', reg.scope);

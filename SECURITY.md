@@ -16,9 +16,8 @@ EndoPima Kenya is a bilingual, community-first endometriosis early-recognition a
 - No `eval`, no `innerHTML` with user data without escaping
 
 ### 3. Security Headers (Military-Grade)
-- **HTML Meta CSP:** `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'`
+- **HTML Meta CSP:** `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'`
 - **X-Content-Type-Options:** `nosniff`
-- **X-Frame-Options:** `DENY` (via CSP frame-ancestors)
 - **Referrer-Policy:** `strict-origin-when-cross-origin`
 - **Permissions-Policy:** `camera=(), microphone=(), geolocation=()`
 
@@ -36,7 +35,7 @@ EndoPima Kenya is a bilingual, community-first endometriosis early-recognition a
 ### 6. Threat Model
 - **XSS via symptom input:** User enters script in symptom field → Escaped via `esc()`, CSP blocks inline scripts
 - **Data leakage:** Health data exfiltration → No storage, no backend, no tracking
-- **Clickjacking:** Iframe embed → CSP frame-ancestors none, X-Frame-Options DENY
+- **Clickjacking limitation:** GitHub Pages cannot set `frame-ancestors` or `X-Frame-Options` response headers for this static deployment.
 - **Misinformation:** Health advice misuse → Disclaimer: Not medical advice, concept only, see clinician
 
 ### 7. Secure Development

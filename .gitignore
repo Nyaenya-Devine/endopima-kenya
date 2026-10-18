@@ -10,3 +10,7 @@
 Thumbs.db
 # Archive snapshots (repo tree is the source of truth)
 *.zip
+
+# Arena tooling metadata
+.arena-audit.json
+.arena-changes.json
